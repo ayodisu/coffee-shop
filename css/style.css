@@ -6300,7 +6300,8 @@ button.bg-dark:focus {
 
 .pr-5,
 .px-5 {
-  padding-right: 3rem !important; }
+  /* padding-right: 3rem !important; */
+  }
 
 .pb-5,
 .py-5 {
@@ -6308,7 +6309,8 @@ button.bg-dark:focus {
 
 .pl-5,
 .px-5 {
-  padding-left: 3rem !important; }
+  padding-left: 3rem !important;
+  }
 
 .m-auto {
   margin: auto !important; }
@@ -7720,7 +7722,8 @@ h1, h2, h3, h4, h5,
   .btn.btn-primary {
     background: #c49b63;
     border: 1px solid #c49b63;
-    color: #000; }
+    color: #000;
+    }
     .btn.btn-primary:hover {
       border: 1px solid #c49b63;
       background: transparent;
@@ -7996,8 +7999,9 @@ h1, h2, h3, h4, h5,
   height: 54px !important;
   text-align: center;
   bordeR: 1px solid rgba(255, 255, 255, 0.1) !important;
-  color: #c49b63 !important;
-  padding: 10px 20px; }
+  /* color: #c49b63 !important; */
+  padding: 10px 20px;
+  }
 
 .product-details .form-group {
   position: relative; }
