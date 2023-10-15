@@ -40,6 +40,8 @@ if (isset($_GET['id'])) {
 			":quantity" => $quantity,
 			":user_id" => $user_id
 		]);
+
+		echo "<script>alert('added to cart successfully');</script>)";
 	}
 
 
@@ -119,11 +121,15 @@ if (isset($_GET['id'])) {
 					<input name="pro_id" type="hidden" value="<?php echo $singleProduct->id; ?>">
 					<input name="price" type="hidden" value="<?php echo $singleProduct->price; ?>">
 					<input name="description" type="hidden" value="<?php echo $singleProduct->description; ?>">
-					<?php if($rowCount > 0) : ?>
-					<button name="submit" type="submit" class="btn btn-primary py-3 px-5" disabled>Added to Cart</button>
-						<?php else : ?>
-					<button name="submit" type="submit" class="btn btn-primary py-3 px-5">Add to Cart</button>
-						<?php endif;  ?>
+					<?php if(isset($_SESSION['user_id'])) : ?>
+						<?php if($rowCount > 0) : ?>
+						<button name="submit" type="submit" class="btn btn-primary py-3 px-5" disabled>Added to Cart</button>
+							<?php else : ?>
+						<button name="submit" type="submit" class="btn btn-primary py-3 px-5">Add to Cart</button>
+							<?php endif;  ?>
+					<?php else: ?>
+						<p style="text-align: center !important;" class="btn btn-primary py-3 px-5">login to add to cart</p>
+					<?php endif; ?>
 				</form>
 
 			</div>

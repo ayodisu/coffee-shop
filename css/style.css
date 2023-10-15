@@ -8003,10 +8003,6 @@ h1, h2, h3, h4, h5,
   padding: 10px 20px;
   }
 
-.product-details .form-group {
-  position: relative; }
-  .product-details .form-group .form-control {
-    padding-right: 40px; }
   .product-details .form-group .icon {
     position: absolute;
     top: 50%;
