@@ -46,12 +46,12 @@
       </button>
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-          <li class="nav-item"><a href="menu.html" class="nav-link">Menu</a></li>
-          <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item active"><a href="<?php echo APPURL; ?>/index.php" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="<?php echo APPURL; ?>/menu.php" class="nav-link">Menu</a></li>
+          <li class="nav-item"><a href="<?php echo APPURL; ?>/services.html" class="nav-link">Services</a></li>
+          <li class="nav-item"><a href="<?php echo APPURL; ?>/about.html" class="nav-link">About</a></li>
 
-          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+          <li class="nav-item"><a href="<?php echo APPURL; ?>/contact.html" class="nav-link">Contact</a></li>
           <?php if (isset($_SESSION['username'])) : ?>
             <li class="nav-item cart"><a href="<?php echo APPURL; ?>/products/cart.php" class="nav-link"><span class="icon icon-shopping_cart"></span></a>
 
