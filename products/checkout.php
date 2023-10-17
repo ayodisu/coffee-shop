@@ -3,121 +3,151 @@
 <?php
 
 
-	if (isset($_POST['submit'])) {
+if (isset($_POST['submit'])) {
 
-		if (empty($_POST['first_name']) OR empty($_POST['last_name']) OR empty($_POST['state']) OR empty($_POST['street_address'])) {
+	if (empty($_POST['first_name']) OR empty($_POST['last_name']) OR empty($_POST['state']) OR empty($_POST['street_address']) OR empty($_POST['town']) OR empty($_POST['zip_code']) OR empty($_POST['phone']) OR empty($_POST['email'])) {
 		echo "<script>alert('one or more inputs are empty');</script>";
-		} else {
-			
-		}
+	} else {
+
+		$first_name = $_POST['first_name'];
+		$last_name = $_POST['last_name'];
+		$state = $_POST['state'];
+		$street_address = $_POST['street_address'];
+		$town = $_POST['town'];
+		$zip_code = $_POST['zip_code'];
+		$phone = $_POST['phone'];
+		$email = $_POST['email'];
+		$user_id = $_SESSION['user_id'];
+		$status = "pending";
+		$total_price = $_SESSION['total_price'];
+
+		$place_orders = $conn->prepare("INSERT INTO orders (first_name, last_name, state, street_address, town, zip_code, phone, email, user_id, status, total_price) VALUES (:first_name, :last_name, :state, :street_address, :town, :zip_code, :phone, :email, :user_id, :status, :total_price)");
+
+		$place_orders->execute([
+			":first_name" => $first_name,
+			":last_name" => $last_name,
+			":state" => $state,
+			":street_address" => $street_address,
+			":town" => $town,
+			":zip_code" => $zip_code,
+			":phone" => $phone,
+			":email" => $email,
+			":user_id" => $user_id,
+			":status" => $status,
+			":total_price" => $total_price,
+
+		]);
+
+		header("location: pay.php");
 	}
+}
 ?>
 
 <section class="home-slider owl-carousel">
 
-    <div class="slider-item" style="background-image: url(<?php echo APPURL; ?>/images/bg_3.jpg);" data-stellar-background-ratio="0.5">
-    	<div class="overlay"></div>
-        <div class="container">
-          <div class="row slider-text justify-content-center align-items-center">
+	<div class="slider-item" style="background-image: url(<?php echo APPURL; ?>/images/bg_3.jpg);" data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row slider-text justify-content-center align-items-center">
 
-            <div class="col-md-7 col-sm-12 text-center ftco-animate">
-            	<h1 class="mb-3 mt-5 bread">Checkout</h1>
-	            <p class="breadcrumbs"><span class="mr-2"><a href="index.php">Home</a></span> <span>Checout</span></p>
-            </div>
+				<div class="col-md-7 col-sm-12 text-center ftco-animate">
+					<h1 class="mb-3 mt-5 bread">Checkout</h1>
+					<p class="breadcrumbs"><span class="mr-2"><a href="index.php">Home</a></span> <span>Checout</span></p>
+				</div>
 
-          </div>
-        </div>
-    </div>
+			</div>
+		</div>
+	</div>
 </section>
 
 <section class="ftco-section">
-    <div class="container">
-        <div class="row">
-          <div class="col-md-12 ftco-animate">
-						<form action="#" class="billing-form ftco-bg-dark p-3 p-md-5">
-							<h3 class="mb-4 billing-heading">Billing Details</h3>
-	          	<div class="row align-items-end">
-	          		<div class="col-md-6">
-	                <div class="form-group">
-	                	<label for="firstname">Firt Name</label>
-	                  <input type="text" class="form-control" placeholder="">
-	                </div>
-	              </div>
-	              <div class="col-md-6">
-	                <div class="form-group">
-	                	<label for="lastname">Last Name</label>
-	                  <input type="text" class="form-control" placeholder="">
-	                </div>
-                </div>
-                <div class="w-100"></div>
-		            <div class="col-md-12">
-		            	<div class="form-group">
-		            		<label for="country">State / Country</label>
-		            		<div class="select-wrap">
-		                  <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-		                  <select name="" id="" class="form-control">
-		                  	<option value="">France</option>
-		                    <option value="">Italy</option>
-		                    <option value="">Philippines</option>
-		                    <option value="">South Korea</option>
-		                    <option value="">Hongkong</option>
-		                    <option value="">Japan</option>
-		                  </select>
-		                </div>
-		            	</div>
-		            </div>
-		            <div class="w-100"></div>
-		            <div class="col-md-12">
-		            	<div class="form-group">
-	                	<label for="streetaddress">Street Address</label>
-	                  <input type="text" class="form-control" placeholder="House number and street name">
-	                </div>
-		            </div>
-		            <div class="col-md-12">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 ftco-animate">
+				<form action="checkout.php" method="POST" class="billing-form ftco-bg-dark p-3 p-md-5">
+					<h3 class="mb-4 billing-heading">Billing Details</h3>
+					<div class="row align-items-end">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="firstname">Firt Name</label>
+								<input name="first_name" type="text" class="form-control" placeholder="">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="lastname">Last Name</label>
+								<input name="last_name" type="text" class="form-control" placeholder="">
+							</div>
+						</div>
+						<div class="w-100"></div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="country">State / Country</label>
+								<div class="select-wrap">
+									<div class="icon"><span class="ion-ios-arrow-down"></span></div>
+									<select name="state" id="" class="form-control">
+										<option value="France">France</option>
+										<option value="Italy">Italy</option>
+										<option value="Philippines">Philippines</option>
+										<option value="South Korea">South Korea</option>
+										<option value="Hongkong">Hongkong</option>
+										<option value="Japan">Japan</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="w-100"></div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="streetaddress">Street Address</label>
+								<input name="street_address" type="text" class="form-control" placeholder="House number and street name">
+							</div>
+						</div>
+						<!-- <div class="col-md-12">
 		            	<div class="form-group">
 	                  <input type="text" class="form-control" placeholder="Appartment, suite, unit etc: (optional)">
 	                </div>
-		            </div>
-		            <div class="w-100"></div>
-		            <div class="col-md-6">
-		            	<div class="form-group">
-	                	<label for="towncity">Town / City</label>
-	                  <input type="text" class="form-control" placeholder="">
-	                </div>
-		            </div>
-		            <div class="col-md-6">
-		            	<div class="form-group">
-		            		<label for="postcodezip">Postcode / ZIP *</label>
-	                  <input type="text" class="form-control" placeholder="">
-	                </div>
-		            </div>
-		            <div class="w-100"></div>
-		            <div class="col-md-6">
-	                <div class="form-group">
-	                	<label for="phone">Phone</label>
-	                  <input type="text" class="form-control" placeholder="">
-	                </div>
-	              </div>
-	              <div class="col-md-6">
-	                <div class="form-group">
-	                	<label for="emailaddress">Email Address</label>
-	                  <input type="text" class="form-control" placeholder="">
-	                </div>
-                </div>
-                <div class="w-100"></div>
-                <div class="col-md-12">
-                	<div class="form-group mt-4">
-										<div class="radio">
-                      <p><a href="#"class="btn btn-primary py-3 px-4">Place an order</a></p>
+		            </div> -->
+						<div class="w-100"></div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="towncity">Town / City</label>
+								<input name="town" type="text" class="form-control" placeholder="">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="postcodezip">Postcode / ZIP *</label>
+								<input name="zip_code" type="text" class="form-control" placeholder="">
+							</div>
+						</div>
+						<div class="w-100"></div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="phone">Phone</label>
+								<input name="phone" type="text" class="form-control" placeholder="">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="emailaddress">Email Address</label>
+								<input name="email" type="text" class="form-control" placeholder="">
+							</div>
+						</div>
+						<div class="w-100"></div>
+						<div class="col-md-12">
+							<div class="form-group mt-4">
+								<div class="radio">
+									<p><button name="submit" type="submit" class="btn btn-primary py-3 px-4">Place an order and pay</button></p>
 
-										</div>
-									</div>
-                </div>
-	            </div>
-	          </form><!-- END -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</form><!-- END -->
 
 
-<!-- 
+				<!-- 
 	          <div class="row mt-5 pt-3 d-flex">
 	          	<div class="col-md-6 d-flex">
 	          		<div class="cart-detail cart-total ftco-bg-dark p-3 p-md-4">
@@ -176,12 +206,12 @@
 								</div>
 	          	</div>
 	          </div> -->
-          </div> <!-- .col-md-8 -->
+			</div> <!-- .col-md-8 -->
 
-           
-          </div>
 
-        </div>
-      </div>
-    </section> <!-- .section -->
+		</div>
+
+	</div>
+	</div>
+</section> <!-- .section -->
 <?php require "../includes/footer.php"; ?>
