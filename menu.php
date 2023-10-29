@@ -1,5 +1,5 @@
-<?php require "../includes/header.php"; ?>
-<?php require "../config/config.php"; ?>
+<?php require "includes/header.php"; ?>
+<?php require "config/config.php"; ?>
 
     <section class="home-slider owl-carousel">
 
@@ -375,4 +375,4 @@
     	</div>
     </section>
 
-<?php require "../includes/footer.php"; ?>
+<?php require "includes/footer.php"; ?>
