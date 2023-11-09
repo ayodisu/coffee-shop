@@ -418,5 +418,3 @@
 	    </div>
 	  </section>
 	<?php require "includes/footer.php"; ?> 
-  </body>
-</html>

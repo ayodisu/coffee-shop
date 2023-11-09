@@ -62,14 +62,14 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label for="Email">Email</label>
-                <input type="text" name="email" class="form-control" placeholder="Email">
+                <input type="text" name="email" class="form-control" placeholder="Email" required>
               </div>
             </div>
 
             <div class="col-md-12">
               <div class="form-group">
                 <label for="Password">Password</label>
-                <input type="password" name="password" class="form-control" placeholder="Password">
+                <input type="password" name="password" class="form-control" placeholder="Password" required>
               </div>
 
             </div>
