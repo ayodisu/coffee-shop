@@ -1,13 +1,13 @@
 <?php require "../includes/header.php"; ?>
 <?php require "../config/config.php"; ?>
-<?php 
+<?php
 
-    if (!isset($_SESSION['user_id'])) {
-        header("location: " . APPURL . "");
-    }
+	if (!isset($_SESSION['user_id'])) {
+		header("location: " . APPURL . "");
+	}
 
 	$orders = $conn->query("SELECT * FROM orders WHERE user_id='$_SESSION[user_id]'");
-	$orders-> execute();
+	$orders->execute();
 
 	$allOrders = $orders->fetchAll(PDO::FETCH_OBJ);
 
@@ -47,6 +47,7 @@
 									<th>Phone</th>
 									<th>Total Price</th>
 									<th>Status</th>
+									<th>Write a Review</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -55,7 +56,7 @@
 										<td class="product-remove"><?php echo $order->first_name; ?></td>
 
 										<td class="image-prod">
-										<?php echo $order->last_name; ?>
+											<?php echo $order->last_name; ?>
 										</td>
 
 										<td class="product-name">
@@ -65,13 +66,16 @@
 										<td class="price"><?php echo $order->street_address; ?></td>
 
 										<td>
-										<?php echo $order->phone; ?>
+											<?php echo $order->phone; ?>
 										</td>
 
 										<td class="total">$<?php echo $order->total_price; ?></td>
 										<td class="total"><?php echo $order->status; ?></td>
-									<?php endforeach; ?>
+										<?php if ($order->status == "Delivered") : ?>
+											<td class="total"><a class="btn btn-primary" href="<?php echo APPURL; ?>/reviews/write-review.php">write review</span></a></td>
+										<?php endif; ?>
 									</tr><!-- END TR-->
+								<?php endforeach; ?>
 							</tbody>
 						</table>
 					<?php else : ?>

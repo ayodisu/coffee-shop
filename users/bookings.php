@@ -47,6 +47,7 @@
 									<th>Phone</th>
 									<th>Message</th>
 									<th>Status</th>
+									<th>Review</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -70,6 +71,9 @@
 
 										<td class="total"><?php echo $booking->message; ?></td>
 										<td class="total"><?php echo $booking->status; ?></td>
+										<?php if ($booking->status == "Done") : ?>
+											<td class="total"><a class="btn btn-primary" href="<?php echo APPURL; ?>/reviews/write-review.php">write review</span></a></td>
+										<?php endif; ?>
 									<?php endforeach; ?>
 									</tr><!-- END TR-->
 							</tbody>
