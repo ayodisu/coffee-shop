@@ -28,8 +28,6 @@
                 header("location: show-orders.php");
             }
         }
-    }else {
-        echo "error";
     }
 
 
