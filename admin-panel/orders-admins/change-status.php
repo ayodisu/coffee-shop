@@ -7,7 +7,7 @@
     }
 
 
-    // Ran into a bug here, and it's driving me fucking crazy wlh
+    // Ran into a bug here, and it almost made me crazy wlh
     if (isset($_GET['id'])) {
 
         $id = $_GET['id'];

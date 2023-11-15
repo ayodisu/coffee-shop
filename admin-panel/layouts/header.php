@@ -37,16 +37,16 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="admins/admins.php" style="margin-left: 20px;">Admins</a>
+                                <a class="nav-link" href="<?php echo ADMINURL?>/admins/admins.php" style="margin-left: 20px;">Admins</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo ADMINURL?>/orders-admins/show-orders.php" style="margin-left: 20px;">Orders</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="products-admins/show-products.php" style="margin-left: 20px;">Products</a>
+                                <a class="nav-link" href="<?php echo ADMINURL?>/products-admins/show-products.php" style="margin-left: 20px;">Products</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="bookings-admins/show-bookings.php" style="margin-left: 20px;">Bookings</a>
+                                <a class="nav-link" href="<?php echo ADMINURL?>/bookings-admins/show-bookings.php" style="margin-left: 20px;">Bookings</a>
                             </li>
                         </ul> 
                     <?php endif; ?>
