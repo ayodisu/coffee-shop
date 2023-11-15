@@ -68,7 +68,7 @@ if (isset($_POST['checkout'])) {
 										<td class="product-remove"><a href="delete-product.php?id=<?php echo $product->id; ?>"><span class="icon-close"></span></a></td>
 
 										<td class="image-prod">
-											<div class="img" style="background-image:url(<?php echo APPURL ?>/images/<?php echo $product->image; ?>);"></div>
+											<div class="img" style="background-image:url(<?php echo IMAGEPRODUCTS; ?>/<?php echo $product->image; ?>);"></div>
 										</td>
 
 										<td class="product-name">

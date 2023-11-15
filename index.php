@@ -12,8 +12,8 @@
 	$reviews->execute();
 
 	$allReviews = $reviews->fetchAll(PDO::FETCH_OBJ)
-	
-	?>
+
+?>
 
 
 <section class="home-slider owl-carousel">
@@ -126,9 +126,13 @@
 						<div class="form-group">
 							<textarea name="message" id="" cols="30" rows="2" class="form-control" placeholder="Message"></textarea>
 						</div>
-						<div class="form-group ml-md-4">
-							<button type="submit" name="submit" class="btn btn-white py-3 px-4">Book a Table</button>
-						</div>
+						<?php if (isset($_SESSION['user_id'])) : ?>
+							<div class="form-group ml-md-4">
+								<button type="submit" name="submit" class="btn btn-white py-3 px-4">Book a Table</button>
+							</div>
+						<?php else : ?>
+							<p class="text-white">Login to book table</p>
+						<?php endif; ?>
 					</div>
 				</form>
 			</div>
@@ -291,7 +295,7 @@
 			<?php foreach ($allProducts as $product) : ?>
 				<div class="col-md-3">
 					<div class="menu-entry">
-						<a target="_blank" href="images/<?php echo $product->image; ?>" class="img" style="background-image: url(<?php echo APPURL; ?>/images/<?php echo $product->image; ?>);"></a>
+						<a target="_blank" href="images/<?php echo $product->image; ?>" class="img" style="background-image: url(<?php echo IMAGEPRODUCTS; ?>/<?php echo $product->image; ?>);"></a>
 						<div class="text text-center pt-4">
 							<h3><a href="#"><?php echo $product->name; ?></a></h3>
 							<p><?php echo $product->description; ?></p>
@@ -356,17 +360,17 @@
 	</div>
 	<div class="container-wrap">
 		<div class="row d-flex no-gutters">
-			<?php foreach($allReviews as $review) : ?>
-			<div class="col-md-3 align-self-sm-end ftco-animate">
-				<div class="testimony">
-					<blockquote>
-						<p>&ldquo;<?php echo $review->review; ?>.&rdquo;</p>
-					</blockquote>
-					<div class="author d-flex mt-4">
-						<div class="name align-self-center"><?php echo $review->username; ?></div>
+			<?php foreach ($allReviews as $review) : ?>
+				<div class="col-md-3 align-self-sm-end ftco-animate">
+					<div class="testimony">
+						<blockquote>
+							<p>&ldquo;<?php echo $review->review; ?>.&rdquo;</p>
+						</blockquote>
+						<div class="author d-flex mt-4">
+							<div class="name align-self-center"><?php echo $review->username; ?></div>
+						</div>
 					</div>
 				</div>
-			</div>
 			<?php endforeach; ?>
 		</div>
 	</div>

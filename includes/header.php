@@ -1,6 +1,7 @@
 <?php
   session_start();
   define("APPURL", "http://localhost/coffeefy");
+  define("IMAGEPRODUCTS", "http://localhost/coffeefy/admin-panel/products-admins/images");
 ?>
 
 <!DOCTYPE html>
