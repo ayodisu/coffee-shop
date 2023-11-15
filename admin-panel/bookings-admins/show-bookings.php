@@ -1,67 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
-    <title>Admin Panel</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-     <link href="../styles/style.css" rel="stylesheet">
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-</head>
-<body>
-<div id="wrapper">
-    <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark bg-dark">
-      <div class="container">
-      <a class="navbar-brand" href="#">LOGO</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+<?php require "../layouts/header.php"; ?>
+<?php require "../../config/config.php"; ?>
+<?php
 
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav side-nav" >
-          <li class="nav-item">
-            <a class="nav-link" style="margin-left: 20px;" href="../index.html">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../admins/admins.html" style="margin-left: 20px;">Admins</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../orders-admins/show-orders.html" style="margin-left: 20px;">Orders</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../products-admins/show-products.html" style="margin-left: 20px;">Products</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="bookings-admins/show-bookings.html" style="margin-left: 20px;">Bookings</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav ml-md-auto d-md-flex">
-          <li class="nav-item">
-            <a class="nav-link" href="../index.html">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link  dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              username
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Logout</a>
-              
-          </li>
-                          
-          
-        </ul>
-      </div>
-    </div>
-    </nav>
-    <div class="container-fluid">
+  if (!isset($_SESSION['admin_name'])) {
+    header("location: " . ADMINURL . "/admins/login-admins.php");
+  }
 
+  $bookings = $conn->query("SELECT * FROM bookings");
+  $bookings->execute();
+
+  $allBookings = $bookings->fetchAll(PDO::FETCH_OBJ);
+
+?>
           <div class="row">
         <div class="col">
           <div class="card">
@@ -79,47 +29,27 @@
                     <th scope="col">phone</th>
                     <th scope="col">message</th>
                     <th scope="col">status</th>
+                    <th scope="col">change status</th>
                     <th scope="col">created_at</th>
                     <th scope="col">delete</th>
                   </tr>
                 </thead>
                 <tbody>
+                  <?php foreach($allBookings as $booking) :?>
                   <tr>
-                    <th scope="row">1</th>
-                    <td>MOhamed</td>
-                    <td>Hassan</td>
-                    <td>04/12/2023 </td>
-                    <td>3:13 PM</td>
-                    <td>01929923</td>
-                    <td>Rapidiously expedite team driven potentialities with interoperable "outside the box" thinking. Professionally formulate cross-platform interna</td>
-                    <td>Pending</td>
-                    <td>2023-04-09 15:13:17</td>
-                     <td><a href="delete-bookings.html" class="btn btn-danger  text-center ">delete</a></td>
+                    <th scope="row"><?php echo $booking->id; ?></th>
+                    <td><?php echo $booking->first_name; ?></td>
+                    <td><?php echo $booking->last_name; ?></td>
+                    <td><?php echo $booking->date; ?></td>
+                    <td><?php echo $booking->time; ?></td>
+                    <td><?php echo $booking->phone; ?></td>
+                    <td><?php echo $booking->message; ?></td>
+                    <td><?php echo $booking->status; ?></td>
+                    <td><a href="change-status.php?id=<?php echo $booking->id; ?>" class="btn btn-warning text-white text-center ">change status</a></td>
+                    <td><?php echo $booking->created_at; ?></td>
+                     <td><a href="delete-bookings.php?id=<?php echo $booking->id; ?>" class="btn btn-danger  text-center ">delete</a></td>
                   </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>MOhamed</td>
-                    <td>Hassan</td>
-                    <td>04/12/2023 </td>
-                    <td>3:13 PM</td>
-                    <td>01929923</td>
-                    <td>Rapidiously expedite team driven potentialities with interoperable "outside the box" thinking. Professionally formulate cross-platform interna</td>
-                    <td>Pending</td>
-                    <td>2023-04-09 15:13:17</td>
-                     <td><a href="delete-bookings.html" class="btn btn-danger  text-center ">delete</a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>MOhamed</td>
-                    <td>Hassan</td>
-                    <td>04/12/2023 </td>
-                    <td>3:13 PM</td>
-                    <td>01929923</td>
-                    <td>Rapidiously expedite team driven potentialities with interoperable "outside the box" thinking. Professionally formulate cross-platform interna</td>
-                    <td>Pending</td>
-                    <td>2023-04-09 15:13:17</td>
-                     <td><a href="delete-bookings.html" class="btn btn-danger  text-center ">delete</a></td>
-                  </tr>
+                  <?php endforeach; ?>
                 </tbody>
               </table> 
             </div>
@@ -128,10 +58,4 @@
       </div>
 
 
-
-  </div>
-<script type="text/javascript">
-
-</script>
-</body>
-</html>
+      <?php require "../layouts/footer.php"; ?>
