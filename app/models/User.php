@@ -9,11 +9,10 @@ class User
         $this->db = new Database;
     }
 
-    public function findUserByEmail($email)
+    public function findUserByEmailOrUsername($emailOrUsername)
     {
-        $this->db->query("SELECT * FROM users WHERE email = :email");
-        $stmt = $this->db->prepare("SELECT * FROM users WHERE email = :email");
-        $stmt->execute([':email' => $email]);
+        $stmt = $this->db->prepare("SELECT * FROM users WHERE email = :emailOrUsername OR username = :emailOrUsername");
+        $stmt->execute([':emailOrUsername' => $emailOrUsername]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 

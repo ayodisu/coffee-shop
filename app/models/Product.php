@@ -11,7 +11,7 @@ class Product
 
     public function getProductsByType($type)
     {
-        $this->db->query("SELECT * FROM products WHERE type = :type");
+
         $stmt = $this->db->prepare("SELECT * FROM products WHERE type = :type");
         $stmt->execute([':type' => $type]);
         return $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -33,7 +33,7 @@ class Product
 
     public function getAllProducts()
     {
-        $stmt = $this->db->query("SELECT * FROM products");
+        $stmt = $this->db->prepare("SELECT * FROM products");
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }

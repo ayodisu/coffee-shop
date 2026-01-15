@@ -81,7 +81,7 @@ class AuthController extends Controller
                 $this->view('auth/login', $data);
             } else {
                 // Check for user
-                $loggedInUser = $this->userModel->findUserByEmail($data['email']);
+                $loggedInUser = $this->userModel->findUserByEmailOrUsername($data['email']);
 
                 if ($loggedInUser) {
                     // Verify Password

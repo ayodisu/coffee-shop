@@ -18,16 +18,20 @@ class Admin
 
     public function getCounts()
     {
-        $products = $this->db->query("SELECT COUNT(*) AS count_products FROM products");
+        $products = $this->db->prepare("SELECT COUNT(*) AS count_products FROM products");
+        $products->execute();
         $productsCount = $products->fetch(PDO::FETCH_OBJ);
 
-        $orders = $this->db->query("SELECT COUNT(*) AS count_orders FROM orders");
+        $orders = $this->db->prepare("SELECT COUNT(*) AS count_orders FROM orders");
+        $orders->execute();
         $ordersCount = $orders->fetch(PDO::FETCH_OBJ);
 
-        $bookings = $this->db->query("SELECT COUNT(*) AS count_bookings FROM bookings");
+        $bookings = $this->db->prepare("SELECT COUNT(*) AS count_bookings FROM bookings");
+        $bookings->execute();
         $bookingsCount = $bookings->fetch(PDO::FETCH_OBJ);
 
-        $admins = $this->db->query("SELECT COUNT(*) AS count_admins FROM admins");
+        $admins = $this->db->prepare("SELECT COUNT(*) AS count_admins FROM admins");
+        $admins->execute();
         $adminsCount = $admins->fetch(PDO::FETCH_OBJ);
 
         return (object)[
@@ -40,7 +44,7 @@ class Admin
 
     public function getAllAdmins()
     {
-        $stmt = $this->db->query("SELECT * FROM admins");
+        $stmt = $this->db->prepare("SELECT * FROM admins");
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }

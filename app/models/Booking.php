@@ -11,7 +11,7 @@ class Booking
 
     public function getAllBookings()
     {
-        $stmt = $this->db->query("SELECT * FROM bookings");
+        $stmt = $this->db->prepare("SELECT * FROM bookings");
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }

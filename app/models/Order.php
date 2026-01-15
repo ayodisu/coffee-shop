@@ -17,7 +17,7 @@ class Order
 
     public function getAllOrders()
     {
-        $stmt = $this->db->query("SELECT * FROM orders");
+        $stmt = $this->db->prepare("SELECT * FROM orders");
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
