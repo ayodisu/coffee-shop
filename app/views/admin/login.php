@@ -1,0 +1,33 @@
+<?php require APPROOT . '/views/layouts/admin_header.php'; ?>
+
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title mt-5">Login</h5>
+                <form method="POST" action="<?php echo URLROOT; ?>/adminController/login" class="p-auto">
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        <input type="email" name="email" id="form2Example1" class="form-control" placeholder="Email" />
+
+                    </div>
+
+
+                    <!-- Password input -->
+                    <div class="form-outline mb-4">
+                        <input type="password" name="password" id="form2Example2" placeholder="Password" class="form-control" />
+
+                    </div>
+
+
+
+                    <!-- Submit button -->
+                    <button type="submit" name="submit" class="btn btn-primary  mb-4 text-center">Login</button>
+
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <?php require APPROOT . '/views/layouts/admin_footer.php'; ?>
