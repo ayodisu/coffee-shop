@@ -1,147 +1,84 @@
-<footer class="ftco-footer ftco-section img">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row mb-5">
-            <div class="col-lg-3 col-md-6 mb-5 mb-md-5">
-                <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">About Us</h2>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                        <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+    </main>
+    <!-- Main Content End -->
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Brand Info -->
+                <div class="space-y-4">
+                    <a href="#" class="flex items-center gap-2">
+                        <i class="fas fa-coffee text-primary text-2xl"></i>
+                        <span class="font-serif font-bold text-2xl tracking-tight">Coffeefy</span>
+                    </a>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Crafting the perfect cup since 2010. We source the finest beans from sustainable farms to bring you an unforgettable coffee experience.
+                    </p>
+                    <div class="flex space-x-4 pt-2">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Open Hours -->
+                <div>
+                    <h3 class="text-lg font-bold mb-6 font-serif tracking-wide border-b border-gray-700 pb-2 inline-block">Opening Hours</h3>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li class="flex justify-between">
+                            <span>Monday - Friday</span>
+                            <span class="text-white">8:00 AM - 9:00 PM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Saturday</span>
+                            <span class="text-white">10:00 AM - 8:00 PM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Sunday</span>
+                            <span class="text-white">Closed</span>
+                        </li>
                     </ul>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-5 mb-md-5">
-                <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Recent Blog</h2>
-                    <div class="block-21 mb-4 d-flex">
-                        <a class="blog-img mr-4" style="background-image: url(<?php echo URLROOT; ?>/images/image_1.jpg);"></a>
-                        <div class="text">
-                            <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
-                            <div class="meta">
-                                <div><a href="#"><span class="icon-calendar"></span> Sept 15, 2018</a></div>
-                                <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                                <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="block-21 mb-4 d-flex">
-                        <a class="blog-img mr-4" style="background-image: url(<?php echo URLROOT; ?>/images/image_2.jpg);"></a>
-                        <div class="text">
-                            <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
-                            <div class="meta">
-                                <div><a href="#"><span class="icon-calendar"></span> Sept 15, 2018</a></div>
-                                <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                                <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-6 mb-5 mb-md-5">
-                <div class="ftco-footer-widget mb-4 ml-md-4">
-                    <h2 class="ftco-heading-2">Services</h2>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="py-2 d-block">Cooked</a></li>
-                        <li><a href="#" class="py-2 d-block">Deliver</a></li>
-                        <li><a href="#" class="py-2 d-block">Quality Foods</a></li>
-                        <li><a href="#" class="py-2 d-block">Mixed</a></li>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-bold mb-6 font-serif tracking-wide border-b border-gray-700 pb-2 inline-block">Quick Links</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="<?php echo URLROOT; ?>/home/menu" class="text-gray-400 hover:text-primary transition-colors">Our Menu</a></li>
+                        <li><a href="<?php echo URLROOT; ?>/home/services" class="text-gray-400 hover:text-primary transition-colors">Services</a></li>
+                        <li><a href="<?php echo URLROOT; ?>/home/about" class="text-gray-400 hover:text-primary transition-colors">About Story</a></li>
+                        <li><a href="<?php echo URLROOT; ?>/home/contact" class="text-gray-400 hover:text-primary transition-colors">Contact Us</a></li>
                     </ul>
                 </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h3 class="text-lg font-bold mb-6 font-serif tracking-wide border-b border-gray-700 pb-2 inline-block">Newsletter</h3>
+                    <p class="text-gray-400 text-sm mb-4">Subscribe to get special offers and coffee updates.</p>
+                    <form class="space-y-2">
+                        <input type="email" placeholder="Enter your email" class="w-full px-4 py-2.5 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-sm text-white placeholder-gray-500">
+                        <button class="w-full bg-primary text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition-colors shadow-lg">Subscribe</button>
+                    </form>
+                </div>
             </div>
-            <div class="col-lg-3 col-md-6 mb-5 mb-md-5">
-                <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Have a Questions?</h2>
-                    <div class="block-23 mb-3">
-                        <ul>
-                            <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-                            <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-                            <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
-                        </ul>
-                    </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                <p>&copy; <?php echo date('Y'); ?> Coffeefy. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition-colors">Privacy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms</a>
+                    <a href="#" class="hover:text-white transition-colors">Sitemap</a>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12 text-center">
+    </footer>
 
-                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright &copy;<script>
-                        document.write(new Date().getFullYear());
-                    </script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-            </div>
-        </div>
-    </div>
-</footer>
+    </body>
 
-
-
-<!-- loader -->
-<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
-        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
-    </svg></div>
-
-
-<script src="<?php echo URLROOT; ?>/js/jquery.min.js"></script>
-<script src="<?php echo URLROOT; ?>/js/jquery-migrate-3.0.1.min.js"></script>
-<script src="<?php echo URLROOT; ?>/js/popper.min.js"></script>
-<script src="<?php echo URLROOT; ?>/js/bootstrap.min.js"></script>
-<script src="<?php echo URLROOT; ?>/js/jquery.easing.1.3.js"></script>
-<script src="<?php echo URLROOT; ?>/js/jquery.waypoints.min.js"></script>
-<script src="<?php echo URLROOT; ?>/js/jquery.stellar.min.js"></script>
-<script src="<?php echo URLROOT; ?>/js/owl.carousel.min.js"></script>
-<script src="<?php echo URLROOT; ?>/js/jquery.magnific-popup.min.js"></script>
-<script src="<?php echo URLROOT; ?>/js/aos.js"></script>
-<script src="<?php echo URLROOT; ?>/js/jquery.animateNumber.min.js"></script>
-<script src="<?php echo URLROOT; ?>/js/bootstrap-datepicker.js"></script>
-<script src="<?php echo URLROOT; ?>/js/jquery.timepicker.min.js"></script>
-<script src="<?php echo URLROOT; ?>/js/scrollax.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-<script src="<?php echo URLROOT; ?>/js/google-map.js"></script>
-<script src="<?php echo URLROOT; ?>/js/main.js"></script>
-
-<script>
-    $(document).ready(function() {
-
-        var quantitiy = 0;
-        $('.quantity-right-plus').click(function(e) {
-
-            // Stop acting like a button
-            e.preventDefault();
-            // Get the field name
-            var quantity = parseInt($('#quantity').val());
-
-            // If is not undefined
-
-            $('#quantity').val(quantity + 1);
-
-
-            // Increment
-
-        });
-
-        $('.quantity-left-minus').click(function(e) {
-            // Stop acting like a button
-            e.preventDefault();
-            // Get the field name
-            var quantity = parseInt($('#quantity').val());
-
-            // If is not undefined
-
-            // Increment
-            if (quantity > 0) {
-                $('#quantity').val(quantity - 1);
-            }
-        });
-
-    });
-</script>
-
-
-</body>
-
-</html>
+    </html>

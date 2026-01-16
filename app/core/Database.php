@@ -11,7 +11,7 @@ class Database
 
     public function __construct()
     {
-        // Use environment variables or fallback to defaults (same as your logic)
+        // ENV
         $this->host = getenv('DB_HOST') ?: "localhost";
         $this->dbname = getenv('DB_NAME') ?: "coffeefy";
         $this->user = getenv('DB_USER') ?: "root";
@@ -24,7 +24,7 @@ class Database
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
         );
 
-        // Create PDO instance
+        // PDO
         try {
             $this->dbh = new PDO($dsn, $this->user, $this->pass, $options);
         } catch (PDOException $e) {

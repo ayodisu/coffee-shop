@@ -14,8 +14,8 @@ class BookingController extends Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             if (empty($_POST['first_name']) || empty($_POST['last_name']) || empty($_POST['date']) || empty($_POST['time']) || empty($_POST['phone']) || empty($_POST['message'])) {
-                echo "<script>alert('Pending input');</script>";
-                echo "<script>window.location.href='" . URLROOT . "';</script>";
+                flash('Please fill in all required fields.', 'alert-danger');
+                header("location: " . URLROOT);
             } else {
                 if (isset($_SESSION['user_id'])) {
                     $data = [
@@ -30,9 +30,10 @@ class BookingController extends Controller
                     ];
 
                     $this->bookingModel->createBooking($data);
-                    echo "<script>alert('Booking successful');</script>";
-                    echo "<script>window.location.href='" . URLROOT . "';</script>";
+                    flash('Booking submitted successfully! We will confirm shortly.', 'alert-success');
+                    header("location: " . URLROOT);
                 } else {
+                    flash('Please login to book a table.', 'alert-danger');
                     header("location: " . URLROOT . "/auth/login");
                 }
             }

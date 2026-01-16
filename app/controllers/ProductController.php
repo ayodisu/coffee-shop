@@ -49,7 +49,8 @@ class ProductController extends Controller
             ];
 
             $this->cartModel->addItem($data);
-            echo "<script>alert('added to cart successfully'); window.location.href='" . URLROOT . "/products/single/" . $_POST['pro_id'] . "';</script>";
+            flash('Added to cart successfully!', 'alert-success');
+            header("location: " . URLROOT . "/product/single/" . $_POST['pro_id']);
         } else {
             header("location: " . URLROOT);
         }
@@ -66,9 +67,10 @@ class ProductController extends Controller
         $total = $this->cartModel->getCartTotal($_SESSION['user_id']);
 
         if (isset($_POST['checkout'])) {
-            // Server side calculation again
+            // Simplified calculation: Subtotal + Shipping (10) - Discount (3)
+            // Ideally this should be a method in Cart model
             $_SESSION['total_price'] = $total + 10 - 3;
-            header("location: " . URLROOT . "/products/checkout");
+            header("location: " . URLROOT . "/product/checkout");
             exit;
         }
 
@@ -84,7 +86,7 @@ class ProductController extends Controller
     {
         if (isset($_SESSION['user_id'])) {
             $this->cartModel->deleteItem($id);
-            header("location: " . URLROOT . "/products/cart");
+            header("location: " . URLROOT . "/product/cart");
         }
     }
 
@@ -115,7 +117,7 @@ class ProductController extends Controller
                 ];
 
                 $this->orderModel->createOrder($data);
-                header("location: " . URLROOT . "/products/pay");
+                header("location: " . URLROOT . "/product/pay");
             }
         } else {
             $this->view('products/checkout');
@@ -137,7 +139,7 @@ class ProductController extends Controller
         if (isset($_SESSION['user_id'])) {
             $this->cartModel->deleteAll($_SESSION['user_id']);
             // Maybe redirect to orders page or thank you
-            header("location: " . URLROOT . "/products/cart");
+            header("location: " . URLROOT . "/product/cart");
         }
     }
 }

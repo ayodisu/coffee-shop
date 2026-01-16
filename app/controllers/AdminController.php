@@ -18,7 +18,7 @@ class AdminController extends Controller
     public function index()
     {
         if (!isset($_SESSION['admin_name'])) {
-            header("location: " . URLROOT . "/adminController/login");
+            header("location: " . URLROOT . "/admin/login");
             exit;
         }
 
@@ -31,7 +31,7 @@ class AdminController extends Controller
     public function products()
     {
         if (!isset($_SESSION['admin_name'])) {
-            header("location: " . URLROOT . "/adminController/login");
+            header("location: " . URLROOT . "/admin/login");
             exit;
         }
         $products = $this->productModel->getAllProducts();
@@ -41,7 +41,7 @@ class AdminController extends Controller
     public function createProduct()
     {
         if (!isset($_SESSION['admin_name'])) {
-            header("location: " . URLROOT . "/adminController/login");
+            header("location: " . URLROOT . "/admin/login");
             exit;
         }
 
@@ -74,7 +74,7 @@ class AdminController extends Controller
                     ];
 
                     $this->productModel->createProduct($data);
-                    header("location: " . URLROOT . "/adminController/products");
+                    header("location: " . URLROOT . "/admin/products");
                 } else {
                     echo "<script>alert('File upload failed');</script>";
                     $this->view('admin/products/create');
@@ -88,21 +88,21 @@ class AdminController extends Controller
     public function deleteProduct($id)
     {
         if (!isset($_SESSION['admin_name'])) {
-            header("location: " . URLROOT . "/adminController/login");
+            header("location: " . URLROOT . "/admin/login");
         }
 
         $imageName = $this->productModel->deleteProduct($id);
         if ($imageName) {
             unlink("../public/images/" . $imageName);
         }
-        header("location: " . URLROOT . "/adminController/products");
+        header("location: " . URLROOT . "/admin/products");
     }
 
     // Orders
     public function orders()
     {
         if (!isset($_SESSION['admin_name'])) {
-            header("location: " . URLROOT . "/adminController/login");
+            header("location: " . URLROOT . "/admin/login");
         }
         $orders = $this->orderModel->getAllOrders();
         $this->view('admin/orders/index', ['orders' => $orders]);
@@ -111,10 +111,10 @@ class AdminController extends Controller
     public function deleteOrder($id)
     {
         if (!isset($_SESSION['admin_name'])) {
-            header("location: " . URLROOT . "/adminController/login");
+            header("location: " . URLROOT . "/admin/login");
         }
         $this->orderModel->deleteOrder($id);
-        header("location: " . URLROOT . "/adminController/orders");
+        header("location: " . URLROOT . "/admin/orders");
     }
 
     public function updateOrder($id) // Just showing the form logic is implicit, usually we'd have a view
@@ -122,13 +122,13 @@ class AdminController extends Controller
         // For simplicity, let's assume we might just want to toggle status or show a simpler update form
         // Check legacy: It was a form to change status.
         if (!isset($_SESSION['admin_name'])) {
-            header("location: " . URLROOT . "/adminController/login");
+            header("location: " . URLROOT . "/admin/login");
         }
 
         // If POST
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $this->orderModel->updateStatus($id, $_POST['status']);
-            header("location: " . URLROOT . "/adminController/orders");
+            header("location: " . URLROOT . "/admin/orders");
         } else {
             // Show update view
             $order = $this->orderModel->getOrderById($id);
@@ -140,7 +140,7 @@ class AdminController extends Controller
     public function bookings()
     {
         if (!isset($_SESSION['admin_name'])) {
-            header("location: " . URLROOT . "/adminController/login");
+            header("location: " . URLROOT . "/admin/login");
         }
         $bookings = $this->bookingModel->getAllBookings();
         $this->view('admin/bookings/index', ['bookings' => $bookings]);
@@ -149,21 +149,21 @@ class AdminController extends Controller
     public function deleteBooking($id)
     {
         if (!isset($_SESSION['admin_name'])) {
-            header("location: " . URLROOT . "/adminController/login");
+            header("location: " . URLROOT . "/admin/login");
         }
         $this->bookingModel->deleteBooking($id);
-        header("location: " . URLROOT . "/adminController/bookings");
+        header("location: " . URLROOT . "/admin/bookings");
     }
 
     public function updateBooking($id)
     {
         if (!isset($_SESSION['admin_name'])) {
-            header("location: " . URLROOT . "/adminController/login");
+            header("location: " . URLROOT . "/admin/login");
         }
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $this->bookingModel->updateStatus($id, $_POST['status']);
-            header("location: " . URLROOT . "/adminController/bookings");
+            header("location: " . URLROOT . "/admin/bookings");
         } else {
             $booking = $this->bookingModel->getBookingById($id);
             $this->view('admin/bookings/update', ['booking' => $booking]);
@@ -174,7 +174,7 @@ class AdminController extends Controller
     public function admins()
     {
         if (!isset($_SESSION['admin_name'])) {
-            header("location: " . URLROOT . "/adminController/login");
+            header("location: " . URLROOT . "/admin/login");
         }
         $admins = $this->adminModel->getAllAdmins();
         $this->view('admin/admins/index', ['admins' => $admins]);
@@ -183,7 +183,7 @@ class AdminController extends Controller
     public function createAdmin()
     {
         if (!isset($_SESSION['admin_name'])) {
-            header("location: " . URLROOT . "/adminController/login");
+            header("location: " . URLROOT . "/admin/login");
         }
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -197,7 +197,7 @@ class AdminController extends Controller
                     ':password' => password_hash($_POST['password'], PASSWORD_DEFAULT)
                 ];
                 $this->adminModel->createAdmin($data);
-                header("location: " . URLROOT . "/adminController/admins");
+                header("location: " . URLROOT . "/admin/admins");
             }
         } else {
             $this->view('admin/admins/create');
@@ -207,7 +207,7 @@ class AdminController extends Controller
     public function login()
     {
         if (isset($_SESSION['admin_name'])) {
-            header("location: " . URLROOT . "/adminController/index");
+            header("location: " . URLROOT . "/admin/index");
             exit;
         }
 
@@ -223,7 +223,7 @@ class AdminController extends Controller
                         $_SESSION['admin_name'] = $admin['adminname'];
                         $_SESSION['email'] = $admin['email'];
                         $_SESSION['admin_id'] = $admin['id'];
-                        header("location: " . URLROOT . "/adminController/index");
+                        header("location: " . URLROOT . "/admin/index");
                     } else {
                         echo "<script>alert('Password incorrect');</script>";
                         $this->view('admin/login');
@@ -244,6 +244,6 @@ class AdminController extends Controller
         unset($_SESSION['email']);
         unset($_SESSION['admin_id']);
         session_destroy();
-        header("location: " . URLROOT . "/adminController/login");
+        header("location: " . URLROOT . "/admin/login");
     }
 }

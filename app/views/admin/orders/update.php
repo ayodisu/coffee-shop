@@ -1,29 +1,57 @@
 <?php require APPROOT . '/views/layouts/admin_header.php'; ?>
 
-<div class="row">
-    <div class="col">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title mb-5 d-inline">Update Order Status</h5>
-                <form method="POST" action="<?php echo URLROOT; ?>/adminController/updateOrder/<?php echo $data['order']->id; ?>">
-
-                    <div class="form-outline mb-4 mt-4">
-
-                        <select name="status" class="form-select  form-control" aria-label="Default select example">
-                            <option selected>Choose Status</option>
-                            <option value="Pending">Pending</option>
-                            <option value="Processing">Processing</option>
-                            <option value="Completed">Completed</option>
-                            <option value="Cancelled">Cancelled</option>
-                        </select>
-                    </div>
-
-                    <br>
-                    <button type="submit" name="submit" class="btn btn-primary  mb-4 text-center">Update</button>
-                </form>
-
-            </div>
+<div class="max-w-xl mx-auto">
+    <div class="md:flex md:items-center md:justify-between mb-6">
+        <div class="flex-1 min-w-0">
+            <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">Update Order Status</h2>
+            <p class="text-sm text-gray-500 mt-1">Order #<?php echo $data['order']->id; ?> - <?php echo $data['order']->first_name; ?></p>
+        </div>
+        <div class="mt-4 flex md:mt-0 md:ml-4">
+            <a href="<?php echo URLROOT; ?>/admin/orders" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500">
+                Cancel
+            </a>
         </div>
     </div>
+
+    <div class="bg-white shadow rounded-lg overflow-hidden border border-gray-100">
+        <div class="p-6 bg-gray-50 border-b border-gray-100">
+            <div class="grid grid-cols-2 gap-4 text-sm">
+                <div>
+                    <span class="block text-gray-500">Customer</span>
+                    <span class="font-medium"><?php echo $data['order']->first_name . ' ' . $data['order']->last_name; ?></span>
+                </div>
+                <div>
+                    <span class="block text-gray-500">Total</span>
+                    <span class="font-medium">$<?php echo $data['order']->total_price; ?></span>
+                </div>
+                <div>
+                    <span class="block text-gray-500">Current Status</span>
+                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
+                        <?php echo $data['order']->status; ?>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <form method="POST" action="<?php echo URLROOT; ?>/admin/updateOrder/<?php echo $data['order']->id; ?>" class="p-8">
+            <div class="mb-6">
+                <label for="status" class="block text-sm font-medium text-gray-700 mb-2">New Status</label>
+                <select name="status" id="status" class="shadow-sm focus:ring-emerald-500 focus:border-emerald-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border">
+                    <option value="Pending" <?php echo ($data['order']->status == 'Pending') ? 'selected' : ''; ?>>Pending</option>
+                    <option value="Processing" <?php echo ($data['order']->status == 'Processing') ? 'selected' : ''; ?>>Processing</option>
+                    <option value="Delivered" <?php echo ($data['order']->status == 'Delivered') ? 'selected' : ''; ?>>Delivered</option>
+                    <option value="Completed" <?php echo ($data['order']->status == 'Completed') ? 'selected' : ''; ?>>Completed</option>
+                    <option value="Cancelled" <?php echo ($data['order']->status == 'Cancelled') ? 'selected' : ''; ?>>Cancelled</option>
+                </select>
+            </div>
+
+            <div class="flex justify-end">
+                <button type="submit" name="submit" class="w-full sm:w-auto inline-flex justify-center py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-colors duration-200">
+                    Update Status
+                </button>
+            </div>
+        </form>
+    </div>
 </div>
+
 <?php require APPROOT . '/views/layouts/admin_footer.php'; ?>

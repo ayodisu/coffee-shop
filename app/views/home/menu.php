@@ -1,207 +1,120 @@
 <?php require APPROOT . '/views/layouts/header.php'; ?>
 
-<section class="home-slider owl-carousel">
-
-    <div class="slider-item" style="background-image: url(<?php echo URLROOT; ?>/images/bg_3.jpg);" data-stellar-background-ratio="0.5">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row slider-text justify-content-center align-items-center">
-
-                <div class="col-md-7 col-sm-12 text-center ftco-animate">
-                    <h1 class="mb-3 mt-5 bread">Our Menu</h1>
-                    <p class="breadcrumbs"><span class="mr-2"><a href="<?php echo URLROOT; ?>">Home</a></span> <span>Menu</span></p>
-                </div>
-
-            </div>
-        </div>
+<!-- Breadcrumb -->
+<div class="bg-gray-100 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-bold text-gray-900 font-serif">Our Menu</h1>
+        <nav class="text-sm font-medium text-gray-500 mt-2">
+            <ol class="list-none p-0 inline-flex">
+                <li class="flex items-center">
+                    <a href="<?php echo URLROOT; ?>" class="hover:text-primary transition-colors">Home</a>
+                    <svg class="fill-current w-3 h-3 mx-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                        <path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z" />
+                    </svg>
+                </li>
+                <li>
+                    <span class="text-gray-900">Menu</span>
+                </li>
+            </ol>
+        </nav>
     </div>
-</section>
+</div>
 
-<section class="ftco-intro">
-    <div class="container-wrap">
-        <div class="wrap d-md-flex align-items-xl-end">
-            <div class="info">
-                <div class="row no-gutters">
-                    <div class="col-md-4 d-flex ftco-animate">
-                        <div class="icon"><span class="icon-phone"></span></div>
-                        <div class="text">
-                            <h3>000 (123) 456 7890</h3>
-                            <p>A small river named Duden flows by their place and supplies.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 d-flex ftco-animate">
-                        <div class="icon"><span class="icon-my_location"></span></div>
-                        <div class="text">
-                            <h3>198 West 21th Street</h3>
-                            <p> 203 Fake St. Mountain View, San Francisco, California, USA</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 d-flex ftco-animate">
-                        <div class="icon"><span class="icon-clock-o"></span></div>
-                        <div class="text">
-                            <h3>Open Monday-Friday</h3>
-                            <p>8:00am - 9:00pm</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="book p-4">
-                <h3>Book a Table</h3>
-                <form action="<?php echo URLROOT; ?>/booking/book" method="POST" class="appointment-form">
-                    <div class="d-md-flex">
-                        <div class="form-group">
-                            <input name="first_name" type="text" class="form-control" placeholder="First Name">
-                        </div>
-                        <div class="form-group ml-md-4">
-                            <input name="last_name" type="text" class="form-control" placeholder="Last Name">
-                        </div>
-                    </div>
-                    <div class="d-md-flex">
-                        <div class="form-group">
-                            <div class="input-wrap">
-                                <div class="icon"><span class="ion-md-calendar"></span></div>
-                                <input name="date" type="text" class="form-control appointment_date" placeholder="Date">
-                            </div>
-                        </div>
-                        <div class="form-group ml-md-4">
-                            <div class="input-wrap">
-                                <div class="icon"><span class="ion-ios-clock"></span></div>
-                                <input name="time" type="text" class="form-control appointment_time" placeholder="Time">
-                            </div>
-                        </div>
-                        <div class="form-group ml-md-4">
-                            <input name="phone" type="text" class="form-control" placeholder="Phone">
-                        </div>
-                    </div>
-                    <div class="d-md-flex">
-                        <div class="form-group">
-                            <textarea name="message" id="" cols="30" rows="2" class="form-control" placeholder="Message"></textarea>
-                        </div>
-                        <?php if (isset($_SESSION['user_id'])) : ?>
-                            <div class="form-group ml-md-4">
-                                <input name="submit" type="submit" value="Book" class="btn btn-white py-3 px-4">
-                            </div>
-                        <?php else : ?>
-                            <p class="text-white">Login to book table</p>
-                        <?php endif; ?>
-                    </div>
-                </form>
+<section class="py-12 bg-white min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Category Tabs -->
+        <div class="flex justify-center mb-12">
+            <div class="inline-flex rounded-lg p-1 bg-gray-100">
+                <button onclick="switchTab('drinks')" id="tab-drinks" class="px-8 py-3 rounded-md text-sm font-bold text-white bg-primary shadow-sm transition-all duration-200">
+                    <i class="fas fa-coffee mr-2"></i> Drinks
+                </button>
+                <button onclick="switchTab('desserts')" id="tab-desserts" class="px-8 py-3 rounded-md text-sm font-bold text-gray-600 hover:text-gray-900 transition-all duration-200">
+                    <i class="fas fa-cookie mr-2"></i> Desserts
+                </button>
             </div>
         </div>
-    </div>
-</section>
 
-<section class="ftco-section">
-    <div class="container">
-        <div class="row">
-
-
-            <div class="col-md-6">
-                <h3 class="mb-5 heading-pricing ftco-animate">Desserts</h3>
-                <?php foreach ($data['desserts'] as $dessert) : ?>
-                    <div class="pricing-entry d-flex ftco-animate">
-                        <div class="img" style="background-image: url(<?php echo IMAGEPRODUCTS; ?>/<?php echo $dessert->image; ?>);"></div>
-                        <div class="desc pl-3">
-                            <div class="d-flex text align-items-center">
-                                <h3><span><?php echo $dessert->name; ?></span></h3>
-                                <span class="price">$<?php echo $dessert->price; ?></span>
-                            </div>
-                            <div class="d-block">
-                                <p><?php echo $dessert->description; ?></p>
-                            </div>
+        <!-- Drinks Grid -->
+        <div id="content-drinks" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 fade-in">
+            <?php foreach ($data['drinks'] as $product) : ?>
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden group hover:-translate-y-2 transition-transform duration-300 border border-gray-100 flex flex-col">
+                    <div class="h-64 overflow-hidden relative bg-gray-100">
+                        <img src="<?php echo IMAGEPRODUCTS; ?>/<?php echo $product->image; ?>" alt="<?php echo $product->name; ?>" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <!-- Quick Action Overlay -->
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                            <a href="<?php echo URLROOT; ?>/product/single/<?php echo $product->id; ?>" class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-900 hover:bg-primary hover:text-white transition-colors shadow-lg" title="View Details">
+                                <i class="fas fa-eye"></i>
+                            </a>
                         </div>
                     </div>
-                <?php endforeach; ?>
-            </div>
-
-            <div class="col-md-6">
-                <h3 class="mb-5 heading-pricing ftco-animate">Drinks</h3>
-                <?php foreach ($data['drinks'] as $drink) : ?>
-                    <div class="pricing-entry d-flex ftco-animate">
-                        <div class="img" style="background-image: url(<?php echo IMAGEPRODUCTS; ?>/<?php echo $drink->image; ?>);"></div>
-                        <div class="desc pl-3">
-                            <div class="d-flex text align-items-center">
-                                <h3><span><?php echo $drink->name; ?></span></h3>
-                                <span class="price">$<?php echo $drink->price; ?></span>
-                            </div>
-                            <div class="d-block">
-                                <p><?php echo $drink->description; ?></p>
-                            </div>
+                    <div class="p-6 flex-1 flex flex-col text-center">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2 font-serif"><?php echo $product->name; ?></h3>
+                        <p class="text-gray-500 text-sm mb-4 line-clamp-2 flex-1"><?php echo $product->description; ?></p>
+                        <div class="flex items-center justify-center gap-2 mt-auto">
+                            <span class="text-xl font-bold text-primary">$<?php echo $product->price; ?></span>
                         </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="ftco-menu mb-5 pb-5">
-    <div class="container">
-        <div class="row justify-content-center mb-5">
-            <div class="col-md-7 heading-section text-center ftco-animate">
-                <span class="subheading">Discover</span>
-                <h2 class="mb-4">Our Products</h2>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-            </div>
-        </div>
-        <div class="row d-md-flex">
-            <div class="col-lg-12 ftco-animate p-md-5">
-                <div class="row">
-                    <div class="col-md-12 nav-link-wrap mb-5">
-                        <div class="nav ftco-animate nav-pills justify-content-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-
-                            <a class="nav-link active" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Drinks</a>
-
-                            <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Desserts</a>
-                        </div>
-                    </div>
-                    <div class="col-md-12 d-flex align-items-center">
-
-                        <div class="tab-content ftco-animate" id="v-pills-tabContent">
-
-
-
-                            <div class="tab-pane fade show active" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
-                                <div class="row">
-                                    <?php foreach ($data['drinks'] as $drink) : ?>
-                                        <div class="col-md-4 text-center">
-                                            <div class="menu-wrap">
-                                                <a href="<?php echo URLROOT; ?>/products/product-single/<?php echo $drink->id; ?>" class="menu-img img mb-4" style="background-image: url(<?php echo IMAGEPRODUCTS; ?>/<?php echo $drink->image; ?>);"></a>
-                                                <div class="text">
-                                                    <h3><a href="<?php echo URLROOT; ?>/products/product-single/<?php echo $drink->id; ?>"><?php echo $drink->name; ?></a></h3>
-                                                    <p><?php echo $drink->description; ?></p>
-                                                    <p class="price"><span>$<?php echo $drink->price; ?></span></p>
-                                                    <p><a href="<?php echo URLROOT; ?>/products/product-single/<?php echo $drink->id; ?>" class="btn btn-primary btn-outline-primary">Show</a></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php endforeach; ?>
-                                </div>
-                            </div>
-
-                            <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
-                                <div class="row">
-                                    <?php foreach ($data['desserts'] as $dessert) : ?>
-                                        <div class="col-md-4 text-center">
-                                            <div class="menu-wrap">
-                                                <a href="<?php echo URLROOT; ?>/products/product-single/<?php echo $dessert->id; ?>" class="menu-img img mb-4" style="background-image: url(<?php echo IMAGEPRODUCTS; ?>/<?php echo $dessert->image; ?>);"></a>
-                                                <div class="text">
-                                                    <h3><a href="<?php echo URLROOT; ?>/products/product-single/<?php echo $dessert->id; ?>"><?php echo $dessert->name; ?></a></h3>
-                                                    <p><?php echo $dessert->description; ?></p>
-                                                    <p class="price"><span>$<?php echo $dessert->price; ?></span></p>
-                                                    <p><a href="<?php echo URLROOT; ?>/products/product-single/<?php echo $dessert->id; ?>" class="btn btn-primary btn-outline-primary">Add to cart</a></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php endforeach; ?>
-                                </div>
-                            </div>
-                        </div>
+                        <a href="<?php echo URLROOT; ?>/product/single/<?php echo $product->id; ?>" class="mt-4 w-full block py-2 rounded-lg border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-colors text-sm uppercase tracking-wider">
+                            Order Now
+                        </a>
                     </div>
                 </div>
-            </div>
+            <?php endforeach; ?>
         </div>
+
+        <!-- Desserts Grid (Hidden by default) -->
+        <div id="content-desserts" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 fade-in">
+            <?php foreach ($data['desserts'] as $product) : ?>
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden group hover:-translate-y-2 transition-transform duration-300 border border-gray-100 flex flex-col">
+                    <div class="h-64 overflow-hidden relative bg-gray-100">
+                        <img src="<?php echo IMAGEPRODUCTS; ?>/<?php echo $product->image; ?>" alt="<?php echo $product->name; ?>" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <!-- Quick Action Overlay -->
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                            <a href="<?php echo URLROOT; ?>/product/single/<?php echo $product->id; ?>" class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-900 hover:bg-primary hover:text-white transition-colors shadow-lg" title="View Details">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col text-center">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2 font-serif"><?php echo $product->name; ?></h3>
+                        <p class="text-gray-500 text-sm mb-4 line-clamp-2 flex-1"><?php echo $product->description; ?></p>
+                        <div class="flex items-center justify-center gap-2 mt-auto">
+                            <span class="text-xl font-bold text-primary">$<?php echo $product->price; ?></span>
+                        </div>
+                        <a href="<?php echo URLROOT; ?>/product/single/<?php echo $product->id; ?>" class="mt-4 w-full block py-2 rounded-lg border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-colors text-sm uppercase tracking-wider">
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+
     </div>
 </section>
+
+<!-- Simple Tab Script -->
+<script>
+    function switchTab(tabName) {
+        // Hide all contents
+        document.getElementById('content-drinks').classList.add('hidden');
+        document.getElementById('content-desserts').classList.add('hidden');
+
+        // Reset tab styles
+        document.getElementById('tab-drinks').classList.remove('bg-primary', 'text-white', 'shadow-sm');
+        document.getElementById('tab-drinks').classList.add('text-gray-600');
+
+        document.getElementById('tab-desserts').classList.remove('bg-primary', 'text-white', 'shadow-sm');
+        document.getElementById('tab-desserts').classList.add('text-gray-600');
+
+        // Show selected content
+        document.getElementById('content-' + tabName).classList.remove('hidden');
+        document.getElementById('content-' + tabName).classList.add('grid'); // Restore grid class
+
+        // Style selected tab
+        const activeTab = document.getElementById('tab-' + tabName);
+        activeTab.classList.remove('text-gray-600');
+        activeTab.classList.add('bg-primary', 'text-white', 'shadow-sm');
+    }
+</script>
 
 <?php require APPROOT . '/views/layouts/footer.php'; ?>

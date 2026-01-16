@@ -22,25 +22,27 @@ class AuthController extends Controller
             // Sanitize POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-            if (!validate_csrf_token($_POST['csrf_token'])) {
-                echo "<script>alert('CSRF validation failed');</script>";
-                exit;
-            }
-
             $data = [
                 'username' => trim($_POST['username']),
                 'email' => trim($_POST['email']),
                 'password' => trim($_POST['password'])
             ];
 
+            if (!validate_csrf_token($_POST['csrf_token'])) {
+                flash('register_error', 'CSRF validation failed');
+                $this->view('auth/register', $data);
+                exit;
+            }
+
             if (empty($data['email']) || empty($data['password']) || empty($data['username'])) {
-                echo "<script>alert('Please fill all inputs');</script>";
+                flash('register_error', 'Please fill all inputs');
                 $this->view('auth/register', $data);
             } else {
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
                 // Register User
                 if ($this->userModel->register($data)) {
+                    flash('register_success', 'Registration successful! Please login.');
                     header('location: ' . URLROOT . '/auth/login');
                 } else {
                     die('Something went wrong');
@@ -66,18 +68,19 @@ class AuthController extends Controller
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            if (!validate_csrf_token($_POST['csrf_token'])) {
-                echo "<script>alert('CSRF validation failed');</script>";
-                exit;
-            }
-
             $data = [
                 'email' => trim($_POST['email']),
                 'password' => trim($_POST['password'])
             ];
 
+            if (!validate_csrf_token($_POST['csrf_token'])) {
+                flash('login_error', 'CSRF validation failed');
+                $this->view('auth/login', $data);
+                exit;
+            }
+
             if (empty($data['email']) || empty($data['password'])) {
-                echo "<script>alert('Please fill all inputs');</script>";
+                flash('login_error', 'Please fill all inputs');
                 $this->view('auth/login', $data);
             } else {
                 // Check for user
@@ -86,13 +89,15 @@ class AuthController extends Controller
                 if ($loggedInUser) {
                     // Verify Password
                     if (password_verify($data['password'], $loggedInUser['password'])) {
+                        // Optional: Flash success message
+                        // flash('login_success', 'Welcome back!'); 
                         $this->createUserSession($loggedInUser);
                     } else {
-                        echo "<script>alert('Password incorrect');</script>";
+                        flash('login_error', 'Password incorrect');
                         $this->view('auth/login', $data);
                     }
                 } else {
-                    echo "<script>alert('No user found');</script>";
+                    flash('login_error', 'No user found');
                     $this->view('auth/login', $data);
                 }
             }
