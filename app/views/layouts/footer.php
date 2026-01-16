@@ -15,14 +15,14 @@
                         Crafting the perfect cup since 2010. We source the finest beans from sustainable farms to bring you an unforgettable coffee experience.
                     </p>
                     <div class="flex space-x-4 pt-2">
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors text-white">
+                        <a href="https://x.com/_ayodisu" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors text-white">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors text-white">
-                            <i class="fab fa-facebook-f"></i>
+                        <a href="https://github.com/ayodisu" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors text-white">
+                            <i class="fab fa-github"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors text-white">
-                            <i class="fab fa-instagram"></i>
+                        <a href="https://www.linkedin.com/in/abdulwahabdisu/" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors text-white">
+                            <i class="fab fa-linkedin-in"></i>
                         </a>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
             </div>
 
             <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-                <p>&copy; <?php echo date('Y'); ?> Coffeefy. All rights reserved.</p>
+                <p>&copy; <?php echo date('Y'); ?> Coffeefy. Developed by <a href="https://github.com/ayodisu" class="text-white hover:text-primary transition-colors">Abdulwahab</a>. All rights reserved.</p>
                 <div class="flex space-x-6 mt-4 md:mt-0">
                     <a href="#" class="hover:text-white transition-colors">Privacy</a>
                     <a href="#" class="hover:text-white transition-colors">Terms</a>

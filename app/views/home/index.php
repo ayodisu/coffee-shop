@@ -17,7 +17,7 @@
             A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#order" class="bg-primary text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-emerald-700 transition-all transform hover:scale-105 shadow-lg shadow-emerald-500/30">Order Now</a>
+            <a href="<?php echo URLROOT; ?>/home/menu" class="bg-primary text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-emerald-700 transition-all transform hover:scale-105 shadow-lg shadow-emerald-500/30">Order Now</a>
             <a href="<?php echo URLROOT; ?>/home/menu" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-gray-900 transition-all">View Menu</a>
         </div>
     </div>

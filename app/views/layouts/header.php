@@ -12,6 +12,9 @@ if (!defined('IMAGEPRODUCTS')) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- Favicon (Coffee Cup) -->
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/751/751621.png" type="image/png">
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 

@@ -34,7 +34,7 @@
                         </div>
                         <div class="ml-4">
                             <h4 class="text-lg font-bold text-gray-900">Address</h4>
-                            <p class="text-gray-600 mt-1">198 West 21th Street, Suite 721 New York NY 10016</p>
+                            <p class="text-gray-600 mt-1">Abuja, Nigeria</p>
                         </div>
                     </div>
 
@@ -43,8 +43,12 @@
                             <i class="fas fa-phone-alt text-xl"></i>
                         </div>
                         <div class="ml-4">
-                            <h4 class="text-lg font-bold text-gray-900">Phone</h4>
-                            <p class="text-gray-600 mt-1"><a href="tel://1234567920" class="hover:text-primary transition-colors">+ 1235 2355 98</a></p>
+                            <h4 class="text-lg font-bold text-gray-900">WhatsApp</h4>
+                            <p class="text-gray-600 mt-1">
+                                <a href="https://wa.me/2347038558332" target="_blank" class="hover:text-primary transition-colors flex items-center gap-2">
+                                    +234 703 855 8332
+                                </a>
+                            </p>
                         </div>
                     </div>
 
@@ -54,7 +58,7 @@
                         </div>
                         <div class="ml-4">
                             <h4 class="text-lg font-bold text-gray-900">Email</h4>
-                            <p class="text-gray-600 mt-1"><a href="mailto:info@yoursite.com" class="hover:text-primary transition-colors">info@yoursite.com</a></p>
+                            <p class="text-gray-600 mt-1"><a href="mailto:disuabdulwahab@gmail.com" class="hover:text-primary transition-colors">disuabdulwahab@gmail.com</a></p>
                         </div>
                     </div>
                 </div>
