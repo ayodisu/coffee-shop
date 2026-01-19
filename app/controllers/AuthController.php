@@ -29,27 +29,31 @@ class AuthController extends Controller
             ];
 
             if (!validate_csrf_token($_POST['csrf_token'])) {
-                flash('register_error', 'CSRF validation failed');
+                flash('CSRF validation failed', 'alert-danger');
                 $this->view('auth/register', $data);
                 exit;
             }
 
             if (empty($data['email']) || empty($data['password']) || empty($data['username'])) {
-                flash('register_error', 'Please fill all inputs');
+                flash('Please fill all inputs', 'alert-danger');
                 $this->view('auth/register', $data);
             } else {
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
                 // Register User
                 if ($this->userModel->register($data)) {
-                    flash('register_success', 'Registration successful! Please login.');
-                    header('location: ' . URLROOT . '/auth/login');
+                    $newUser = $this->userModel->findUserByEmailOrUsername($data['email']);
+                    if ($newUser) {
+                        $this->createUserSession($newUser);
+                    } else {
+                        flash('Registration successful! Please login.', 'alert-success');
+                        header('location: ' . URLROOT . '/auth/login');
+                    }
                 } else {
                     die('Something went wrong');
                 }
             }
         } else {
-            // Load Form
             $data = [
                 'username' => '',
                 'email' => '',
@@ -74,13 +78,13 @@ class AuthController extends Controller
             ];
 
             if (!validate_csrf_token($_POST['csrf_token'])) {
-                flash('login_error', 'CSRF validation failed');
+                flash('CSRF validation failed', 'alert-danger');
                 $this->view('auth/login', $data);
                 exit;
             }
 
             if (empty($data['email']) || empty($data['password'])) {
-                flash('login_error', 'Please fill all inputs');
+                flash('Please fill all inputs', 'alert-danger');
                 $this->view('auth/login', $data);
             } else {
                 // Check for user
@@ -89,15 +93,14 @@ class AuthController extends Controller
                 if ($loggedInUser) {
                     // Verify Password
                     if (password_verify($data['password'], $loggedInUser['password'])) {
-                        // Optional: Flash success message
-                        // flash('login_success', 'Welcome back!'); 
+                        flash('Welcome back!', 'alert-success'); 
                         $this->createUserSession($loggedInUser);
                     } else {
-                        flash('login_error', 'Password incorrect');
+                        flash('Password incorrect', 'alert-danger');
                         $this->view('auth/login', $data);
                     }
                 } else {
-                    flash('login_error', 'No user found');
+                    flash('No user found', 'alert-danger');
                     $this->view('auth/login', $data);
                 }
             }
